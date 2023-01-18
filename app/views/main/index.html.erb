@@ -1,0 +1,87 @@
+<main>
+  <section class="uk-section uk-section-xsmall uk-section-muted">
+    <div class="uk-container">
+      <div style="max-width: 850px">
+        <h1>Verifica Real-world Example</h1>
+        <p>
+          Ruby on Rails example application
+          (<a href="https://github.com/maximgurin/verifica-rails-example">source code</a>)
+          for <a href="https://github.com/maximgurin/verifica">Verifica</a> authorization gem.
+          Verifica is designed around Access Control List.
+          <i>With ACL you can have a clear, unified, conditions-and-joins-free way to find entities available for
+            current_user,
+            no matter who is the user and how sophisticated your authorization rules are.</i>
+        </p>
+        <p>
+          This is an imaginary video platform application with quite advanced authorization rules.
+          See Verifica in action and scroll down for details.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="uk-section uk-section-xsmall">
+    <div class="uk-container">
+      <h3>current_user</h3>
+      <div class="uk-child-width-1-2@s uk-child-width-1-4@m uk-grid-medium uk-grid-match" uk-grid>
+        <% @users.each do |user| %>
+          <div>
+            <div class="uk-card uk-card-small uk-card-body <%= user.id == @current_user.id ? 'uk-card-secondary' : 'uk-card-default' %>">
+              <h5><%= user.name %></h5>
+              <div class="uk-text-muted">
+                <span class="uk-margin-small-right" uk-icon="icon: hashtag"></span>
+                <strong><%= user.role %></strong>
+              </div>
+              <div class="uk-text-muted">
+                <span class="uk-margin-small-right" uk-icon="icon: location"></span>
+                <%= user.country_flag %>
+                <%= user.country_name %>
+              </div>
+              <div class="uk-text-muted <%= user.organization.nil? ? 'uk-invisible' : '' %>">
+                <span class="uk-margin-small-right" uk-icon="icon: users"></span>
+                <%= user.organization&.name %>
+              </div>
+              <% if user.id != @current_user.id %>
+                <div class="uk-margin-small-top uk-text-center">
+                  <a href="<%= login_path(user_id: user.id) %>" class="uk-button uk-button-primary" href="">Login</a>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="uk-container uk-margin-large-top uk-margin-bottom">
+      <h3>Videos available for <i><%= @current_user.name %></i> (<%= @videos.size %>/<%= @total_videos %>)</h3>
+      <div class="uk-child-width-1-1@s uk-child-width-1-3@m uk-grid-medium uk-grid-match" uk-grid>
+        <% @videos.each do |video| %>
+          <div>
+            <div class="uk-card uk-card-small uk-card-body uk-card-default">
+              <h5><span class="uk-margin-small-right" uk-icon="icon: video-camera; ratio: 1.5"></span><%= video.name %>
+              </h5>
+              <div class="uk-text-muted">
+                <span class="uk-margin-small-right" uk-icon="icon: user"></span>
+                <%= video.author.name %>
+              </div>
+              <div class="uk-margin-small-top uk-text-right">
+                <% if video.allowed_actions.include?(:write) %>
+                  <span class="uk-icon-button uk-button-primary" uk-icon="pencil"></span>
+                <% end %>
+                <% if video.allowed_actions.include?(:delete) %>
+                  <span class="uk-margin-small-left uk-icon-button uk-button-danger" uk-icon="trash"></span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+  </section>
+  <section class="uk-section uk-section-xsmall uk-section-muted">
+    <div class="uk-container">
+      <div style="max-width: 850px">
+        <h3>Details</h3>
+      </div>
+    </div>
+  </section>
+</main>
