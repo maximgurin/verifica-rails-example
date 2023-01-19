@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/maximgurin/verifica.git
-  revision: 3d0a40d942164d055ce2fdc1439908ed9d9c5a5b
+  revision: c1125c42523ef7391f2d29b9cad11a4d5b9029b7
   branch: main
   specs:
     verifica (1.0.0)
@@ -206,7 +206,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    standard (1.22.0)
+    standard (1.22.1)
       language_server-protocol (~> 3.17.0.2)
       rubocop (= 1.42.0)
       rubocop-performance (= 1.15.2)
