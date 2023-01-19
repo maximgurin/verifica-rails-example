@@ -1,5 +1,31 @@
 // Entry point for your Sass build
 
+$global-primary-background: #1976d2;
+$global-link-color: darken($global-primary-background, 10%);
+$global-muted-color: rgba(0, 0, 0, 0.54);
+
 @import 'uikit/src/scss/variables-theme.scss';
 @import 'uikit/src/scss/mixins-theme.scss';
 @import 'uikit/src/scss/uikit-theme.scss';
+
+.note {
+  background-color: #f0f7fb;
+  border: solid 1px #3498db;
+  padding: $global-margin;
+}
+
+.button-success {
+  background-color: $global-success-background;
+  color: #000;
+}
+
+.button-success:hover {
+  background-color: darken($global-success-background, 5%);
+}
+
+.button-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-column-gap: $global-margin * 4;
+  grid-row-gap: $global-margin * 0.5;
+}
