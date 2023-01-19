@@ -41,7 +41,7 @@ gem "sassc-rails"
 
 gem "countries"
 
-gem "verifica", github: "maximgurin/verifica", branch: "main"
+gem "verifica"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
