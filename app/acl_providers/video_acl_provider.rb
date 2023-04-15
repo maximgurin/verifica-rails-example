@@ -50,11 +50,11 @@ class VideoAclProvider
     if allowed_countries.empty?
       acl.allow authenticated_sid, [:read]
       denied_countries.each do |country|
-        acl.deny "country:#{country}", [:read]
+        acl.deny country_sid(country), [:read]
       end
     else
       allowed_countries.each do |country|
-        acl.allow "country:#{country}", [:read]
+        acl.allow country_sid(country), [:read]
       end
     end
   end
